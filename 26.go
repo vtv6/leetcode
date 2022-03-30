@@ -1,14 +1,13 @@
 package main
 
 func removeDuplicates(nums []int) int {
-	pointer := 0
-	for pointer < len(nums)-1 {
-		if nums[pointer] == nums[pointer+1] {
-			nums = append(nums[:pointer+1], nums[pointer+2:]...)
-		} else {
-			pointer++
+	index := 0
+	for i := 1; i < len(nums); i++ {
+		if nums[i] != nums[i-1] {
+			nums[index] = nums[i-1]
+			index++
 		}
 	}
-
-	return len(nums)
+	nums[index] = nums[len(nums)-1]
+	return index + 1
 }
